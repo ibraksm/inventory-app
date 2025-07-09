@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css">
+    <title>Cars Inventory</title>
+  </head>
+  <body>
+    <header>
+      <h1>Cars Inventory</h1>
+      <a href="/">Return to home page</a>
+      <br />
+      <a href="/categories/add">Add a new category</a>
+    </header>
+    <main>
+      <h2>Categories</h2>
+      <div class="categories-container">
+        <ul>
+          <% vehicle_types.forEach(type => { %>
+            <div class="category-container">
+              <li>
+                <a href="/categories/<%= type.id %>"><%= type.name %></a>
+              </li>
+            </div>
+          <% }); %>
+        </ul>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cars Inventory</title>
+  </head>
+  <body>
+    <header>
+      <h1>Cars Inventory</h1>
+      <a href="/">Return to home page</a>
+      <br />
+      <a href="/vehicles/">Vehicles</a>
+    </header>
+    <main>
+      <h2>Add a new vehicle</h2>
+      <form method="post">
+        <label for="vehicleBrand">Vehicle brand</label>
+        <br />
+        <select name="vehicleBrand" required>
+          <%brands.forEach(brand => {%>
+          <option value="<%= brand.name %>">
+            <%= brand.name %>
+          </option>
+          <% }); %>
+        </select>
+        <br />
+        <br />
+        <label for="vehicleModel">Vehicle model name (without brand)</label>
+        <br />
+        <input type="text" name="vehicleModel" required />
+        <br />
+        <br />
+        <label for="vehicleTypes">Vehicle type(s)</label>
+        <br />
+        <select name="vehicleTypes" multiple>
+          <%types.forEach(type => {%>
+          <option value="<%= type.id %>">
+            <%= type.name %>
+          </option>
+          <% }); %>
+        </select>
+        <br />
+        <br />
+        <label for="vehicleModelyear">Vehicle model year</label>
+        <br />
+        <input type="text" name="vehicleModelyear" required/>
+        <br />
+        <br />
+        <label for="vehicleEnergy">Vehicle energy type</label>
+        <br />
+        <select name="vehicleEnergy" required>
+          <option value="electric">Electric</option>
+          <option value="diesel">Diesel</option>
+          <option value="hybrid">Hybrid</option>
+        </select>
+        <br />
+        <br />
+        <label for="vehicleGearbox">Vehicle gearbox</label>
+        <br />
+        <select name="vehicleGearbox" required>
+          <option value="manual">Manual</option>
+          <option value="automatic">Automatic</option>
+        </select>
+        <br />
+        <br />
+        <label for="vehicleNumberOfSeats">Vehicle number of seats</label>
+        <br />
+        <input type="number" name="vehicleNumberOfSeats" required/>
+        <br />
+        <br />
+        <label for="vehicleNumberOfDoors">Vehicle number of doors</label>
+        <br />
+        <input type="number" name="vehicleNumberOfDoors" required/>
+        <br />
+        <br />
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+  </body>
+</html>

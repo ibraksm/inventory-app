@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cars Inventory</title>
+  </head>
+  <body>
+    <header>
+      <h1>Cars Inventory</h1>
+      <a href="/">Home page</a>
+      <br />
+      <a href="/categories">Categories</a>
+      <br />
+      <a href="/vehicles">All vehicles</a>
+    </header>
+    <main>
+      <h2>Vehicle details</h2>
+      <h3><%= `${car.brand} ${car.model}`%></h3>
+      <p>Model year : <%=car.model_year%></p>
+      <p>Energy : <%=car.energy%></p>
+      <p>Gearbox : <%=car.gearbox%></p>
+      <p>Number of seats : <%=car.number_of_seats%></p>
+      <p>Number of doors : <%=car.number_of_doors%></p>
+      <button id="delete-btn" data-car_id=<%=car.id%>>Delete</button>
+    </main>
+    <script>
+      document
+        .getElementById("delete-btn")
+        .addEventListener("click", async function () {
+          const carId = this.getAttribute("data-car_id");
+          const response = await fetch(`/vehicles/${carId}`, {
+            method: 'DELETE'
+          });
+
+          if (response.ok) {
+            alert("Car deleted successfully!");
+            window.location.href = "/vehicles";
+          } else {
+            alert("Failed to delete car.");
+          }
+        });
+    </script>
+  </body>
+</html>

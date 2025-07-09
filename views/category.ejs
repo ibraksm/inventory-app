@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cars Inventory</title>
+  </head>
+  <body>
+    <header>
+      <h1>Cars Inventory</h1>
+      <a href="/categories">Categories</a>
+      <br />
+      <a href="/vehicles">All vehicles</a>
+    </header>
+    <main>
+        <h2>Vehicles of type <%=type.name%></h2>
+        <ul>
+            <% carsOfType.forEach(car => {%>
+              <li><a href="/vehicles/<%=car.id%>"><%=`${car.brand} ${car.model}`%></a></li>  
+            <%}); %>
+        </ul>
+        <button id="delete-btn" data-type_id=<%=type.id%>>Delete category</button>
+    </main>
+  </body>
+  <script>
+    document
+      .getElementById("delete-btn")
+      .addEventListener("click", async function () {
+        const typeId = this.getAttribute("data-type_id");
+        const response = await fetch(`/categories/${typeId}`, {
+          method: "DELETE",
+        });
+
+        if (response.ok) {
+          alert("Vehicle type deleted successfully!");
+          window.location.href = "/categories";
+        } else {
+          alert("Failed to delete vehicle type.");
+        }
+      });
+  </script>
+</html>

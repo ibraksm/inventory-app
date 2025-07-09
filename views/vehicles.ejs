@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars Inventory</title>
+</head>
+<body>
+    <header>
+      <h1>Cars Inventory</h1>
+      <a href="/">Return to home page</a>
+      <br />
+      <a href="/vehicles/add">Add a new vehicle</a>
+    </header>
+    <main>
+      <h2>Vehicles</h2>
+      <div class="vehicles-container">
+        <ul>
+            <% cars.forEach(car => { %>
+                <li>
+                    <a href="/vehicles/<%= car.id %>"><%= `${car.brand} ${car.model}` %></a>
+                </li>
+            <% }); %>
+        </ul>
+      </div>
+    </main>
+</body>
+</html>
